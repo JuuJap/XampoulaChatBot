@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chatbot escolar com Gemini, FastAPI e MySQL.">
+  <title>Xampoula — Chat IA</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">X</div>
+        <div>
+          <h1>Xampoula</h1>
+          <p>Gemini + FastAPI + MySQL</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div id="statusBadge" class="status-badge" title="Status do sistema">
+          <span class="status-dot"></span>
+          <span id="statusText">Conectando…</span>
+        </div>
+        <button id="newChatBtn" class="secondary-btn" type="button">Nova conversa</button>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <section class="chat-panel" aria-label="Chat">
+        <div id="chat" class="chat" aria-live="polite" aria-relevant="additions">
+          <div class="message bot">
+            <div class="avatar" aria-hidden="true">X</div>
+            <div class="bubble">
+              <p>Pronto. Manda a pergunta.</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <textarea
+            id="question"
+            rows="1"
+            maxlength="4000"
+            placeholder="Digite sua pergunta…"
+            aria-label="Digite sua pergunta"
+            required
+          ></textarea>
+          <div class="composer-footer">
+            <span id="charCount" class="char-count">0 / 4000</span>
+            <div class="composer-hint">Enter envia • Shift+Enter quebra linha</div>
+            <button id="sendBtn" class="primary-btn" type="submit">Enviar</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="saved-panel" aria-label="Respostas salvas">
+        <div class="saved-header">
+          <div>
+            <h2>Respostas salvas</h2>
+            <p><span id="savedCount">0</span> nesta sessão</p>
+          </div>
+          <button id="clearSavedBtn" class="text-btn danger" type="button">Limpar</button>
+        </div>
+
+        <div id="savedList" class="saved-list">
+          <div class="empty-state">
+            <span>☆</span>
+            <p>Nenhuma resposta salva.</p>
+            <small>Use “Salvar” em uma resposta da IA.</small>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <span id="modelInfo">Modelo: carregando…</span>
+      <span>Os dados salvos pertencem somente à sessão atual.</span>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
